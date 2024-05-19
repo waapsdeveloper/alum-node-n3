@@ -2,17 +2,27 @@ import { AdminJSProviderConfig } from '@adminjs/adonis'
 
 import componentLoader from '../app/admin/component_loader.js'
 import authProvider from '../app/admin/auth.js'
+import { LucidResource } from '@adminjs/adonis'
+
+import User from '../app/models/user.js'
+import Profile from '../app/models/profile.js'
 
 const adminjsConfig: AdminJSProviderConfig = {
   adapter: {
-    enabled: false,
+    enabled: true,
   },
   adminjs: {
     rootPath: '/admin',
     loginPath: '/admin/login',
     logoutPath: '/admin/logout',
     componentLoader,
-    resources: [],
+    resources: [
+      new LucidResource(User, 'mysql'),
+      {
+        resource: new LucidResource(Profile, 'mysql'),
+        options: {},
+      }
+    ],
     pages: {},
     locale: {
       availableLanguages: ['en'],
