@@ -5,7 +5,7 @@ import authProvider from '../app/admin/auth.js'
 import { LucidResource } from '@adminjs/adonis'
 
 import User from '../app/models/user.js'
-import Profile from '../app/models/profile.js'
+// import Profile from '../app/models/profile.js'
 
 const adminjsConfig: AdminJSProviderConfig = {
   adapter: {
@@ -17,11 +17,19 @@ const adminjsConfig: AdminJSProviderConfig = {
     logoutPath: '/admin/logout',
     componentLoader,
     resources: [
-      new LucidResource(User, 'mysql'),
       {
-        resource: new LucidResource(Profile, 'mysql'),
-        options: {},
+        resource: new LucidResource(User, 'mysql'),
+        options: {
+          properties: {
+            name : 'name',
+          },
+        }
       }
+
+      // {
+      //   resource: new LucidResource(Profile, 'mysql'),
+      //   options: {},
+      // }
     ],
     pages: {},
     locale: {
