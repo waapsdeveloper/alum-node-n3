@@ -10,7 +10,10 @@ export default class Project extends BaseModel {
   @column()
   declare userId: number
 
-  @belongsTo(() => User)
+  @belongsTo(() => User, {
+    localKey: 'id',
+    foreignKey: 'user_id',
+  })
   declare user: BelongsTo<typeof User>
 
   @column()
