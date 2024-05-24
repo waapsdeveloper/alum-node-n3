@@ -24,9 +24,9 @@ const adminjsConfig: AdminJSProviderConfig = {
     enabled: true,
   },
   adminjs: {
-    rootPath: '/admin',
-    loginPath: '/admin/login',
-    logoutPath: '/admin/logout',
+    rootPath: '/',
+    loginPath: '/login',
+    logoutPath: '/logout',
     componentLoader,
     resources: [
       {
